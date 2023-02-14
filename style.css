@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-background-color: #0E1019;
+    --main-background-color-light: #1B1F31;
+    --main-accent-color: #CEFA05;
+}
+
+.container {
+    max-width: min(80%, 1400px);
+    margin-inline: auto;
+}
+
+body {
+    background-color: var(--main-background-color);
+    scroll-behavior: smooth;
+}
+
+.section__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 4rem;
+    height: 100vh;
+}
+
+.section + .section {
+    border: 6px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, rgba(27, 31, 49, 0) 5%, var(--main-accent-color) 15%, #1B1F31 85%, rgba(27, 31, 49, 0) 95%);
+    border-left: 0;
+    border-bottom: 0;
+    border-right: 0;
+    animation: live-gradient 4s infinite ease;
+}
+
+@keyframes live-gradient {
+    0% {
+        border-image-source: linear-gradient(90deg, rgba(27, 31, 49, 0) 5%, var(--main-accent-color) 15%, #1B1F31 85%, rgba(27, 31, 49, 0) 95%);
+    }
+    50% {
+        border-image-source: linear-gradient(90deg, rgba(27, 31, 49, 0) 5%, var(--main-accent-color) 75%, #1B1F31 85%, rgba(27, 31, 49, 0) 95%);
+    }
+    100% {
+        border-image-source: linear-gradient(90deg, rgba(27, 31, 49, 0) 5%, var(--main-accent-color) 15%, #1B1F31 85%, rgba(27, 31, 49, 0) 95%);
+    }
+}
+
+.section__images {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section__image {
+    --padding-x: 15%;
+    height: 100%;
+    width: calc(100% - var(--padding-x) - var(--padding-x));
+    object-fit: contain;
+    filter: drop-shadow(0px 0px 54px #000000);
+}
+
+.section__command {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--main-accent-color);
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 576px) {
+    .section__inner {
+        height: 50vh;
+        padding-block: 2rem;
+    }
+    .section__image {
+        --padding-x: 5%;
+    }
+    .section__command {
+        font-size: 1rem;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--main-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-background-color-light);
+    border-radius: 9999vmax;
+    border: 0.3rem solid var(--main-background-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--main-accent-color);
+}
